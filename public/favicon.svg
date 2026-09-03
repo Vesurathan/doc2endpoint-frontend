@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background rounded square -->
+  <rect width="64" height="64" rx="14" fill="#7c3aed"/>
+
+  <!-- Document base -->
+  <rect x="14" y="10" width="26" height="34" rx="3" fill="white" fill-opacity="0.18"/>
+  <rect x="14" y="10" width="26" height="34" rx="3" stroke="white" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <!-- Document lines -->
+  <rect x="19" y="18" width="16" height="2" rx="1" fill="white" fill-opacity="0.7"/>
+  <rect x="19" y="23" width="12" height="2" rx="1" fill="white" fill-opacity="0.5"/>
+  <rect x="19" y="28" width="14" height="2" rx="1" fill="white" fill-opacity="0.5"/>
+
+  <!-- Arrow / API bolt -->
+  <path d="M36 36 L44 22 L38 22 L46 10" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- API label pill -->
+  <rect x="28" y="46" width="22" height="10" rx="5" fill="#a78bfa"/>
+  <text x="39" y="55" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="7" font-weight="700" fill="white" letter-spacing="0.5">API</text>
+
+  <!-- D letter mark -->
+  <text x="11" y="57" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="800" fill="white" fill-opacity="0.9">D</text>
+</svg>
