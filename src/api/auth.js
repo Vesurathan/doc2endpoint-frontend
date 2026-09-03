@@ -7,3 +7,5 @@ export const login = (data) =>
   });
 export const getMe = () => client.get("/auth/me");
 export const googleAuth = (access_token) => client.post("/auth/google", { access_token });
+export const verifyEmail = (data) => client.post("/auth/verify-email", data);
+export const resendVerification = (data) => client.post("/auth/resend-verification", data);

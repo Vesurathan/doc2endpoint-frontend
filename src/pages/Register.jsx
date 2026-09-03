@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { register, login } from "../api/auth";
-import { useAuth } from "../context/AuthContext";
+import { register } from "../api/auth";
 import GoogleButton from "../components/GoogleButton";
 import AuthLayout from "../components/AuthLayout";
 
 export default function Register() {
   const navigate = useNavigate();
-  const { loginUser } = useAuth();
   const [form, setForm] = useState({ full_name: "", email: "", password: "", confirm: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,9 +24,7 @@ export default function Register() {
     setLoading(true);
     try {
       await register({ full_name: form.full_name, email: form.email, password: form.password });
-      const res = await login({ username: form.email, password: form.password });
-      loginUser(res.data.access_token, res.data.user);
-      navigate("/dashboard");
+      navigate(`/verify-email?email=${encodeURIComponent(form.email)}`);
     } catch (err) {
       setError(err.response?.data?.detail || "Registration failed. Please try again.");
     } finally {

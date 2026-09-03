@@ -21,7 +21,12 @@ export default function Login() {
       loginUser(res.data.access_token, res.data.user);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.detail || "Invalid email or password.");
+      const detail = err.response?.data?.detail;
+      if (detail === "EMAIL_NOT_VERIFIED") {
+        navigate(`/verify-email?email=${encodeURIComponent(form.username)}`);
+        return;
+      }
+      setError(detail || "Invalid email or password.");
     } finally {
       setLoading(false);
     }
