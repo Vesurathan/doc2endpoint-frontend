@@ -110,7 +110,7 @@ export default function Terms() {
             </p>
             <p>
               Refunds are provided at our discretion. Requests must be submitted within 7 days of a charge to
-              <a href="mailto:billing@doc2endpoint.com" className="text-primary hover:underline"> billing@doc2endpoint.com</a>.
+              <a href="mailto:support@doc2endpoint.com" className="text-primary hover:underline"> support@doc2endpoint.com</a>.
             </p>
           </Section>
 
@@ -230,7 +230,7 @@ export default function Terms() {
             </p>
             <div className="bg-base-200 rounded-lg p-4 text-sm">
               <p className="font-semibold text-base-content">Doc2Endpoint Legal</p>
-              <p>Email: <a href="mailto:legal@doc2endpoint.com" className="text-primary hover:underline">legal@doc2endpoint.com</a></p>
+              <p>Email: <a href="mailto:support@doc2endpoint.com" className="text-primary hover:underline">support@doc2endpoint.com</a></p>
               <p>Address: Doc2Endpoint, Inc., 123 Innovation Drive, San Francisco, CA 94105</p>
             </div>
           </Section>
