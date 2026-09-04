@@ -74,7 +74,7 @@ export default function Login() {
         <div className="form-control">
           <label className="label pb-1">
             <span className="label-text font-medium">Password</span>
-            <a href="mailto:support@doc2endpoint.io" className="label-text-alt text-primary hover:underline">
+            <a href="mailto:support@doc2endpoint.com" className="label-text-alt text-primary hover:underline">
               Forgot password?
             </a>
           </label>

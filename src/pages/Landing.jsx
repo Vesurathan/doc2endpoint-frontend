@@ -293,7 +293,7 @@ export default function Landing() {
             <Link to="/docs"    className="hover:text-base-content transition-colors">Documentation</Link>
             <Link to="/privacy" className="hover:text-base-content transition-colors">Privacy Policy</Link>
             <Link to="/terms"   className="hover:text-base-content transition-colors">Terms of Service</Link>
-            <a href="mailto:support@doc2endpoint.io" className="hover:text-base-content transition-colors">Contact</a>
+            <a href="mailto:support@doc2endpoint.com" className="hover:text-base-content transition-colors">Contact</a>
           </div>
           <p className="text-xs">© 2026 Doc2Endpoint. All rights reserved.</p>
         </div>

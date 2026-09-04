@@ -69,7 +69,7 @@ export default function Terms() {
               for maintaining the security of your password and for all activities that occur under your account.
             </p>
             <p>
-              You must notify us immediately at <a href="mailto:support@doc2endpoint.io" className="text-primary hover:underline">support@doc2endpoint.io</a> if
+              You must notify us immediately at <a href="mailto:support@doc2endpoint.com" className="text-primary hover:underline">support@doc2endpoint.com</a> if
               you suspect unauthorized access to your account. We are not liable for any loss resulting from
               unauthorized use of your account.
             </p>
@@ -110,7 +110,7 @@ export default function Terms() {
             </p>
             <p>
               Refunds are provided at our discretion. Requests must be submitted within 7 days of a charge to
-              <a href="mailto:billing@doc2endpoint.io" className="text-primary hover:underline"> billing@doc2endpoint.io</a>.
+              <a href="mailto:billing@doc2endpoint.com" className="text-primary hover:underline"> billing@doc2endpoint.com</a>.
             </p>
           </Section>
 
@@ -230,7 +230,7 @@ export default function Terms() {
             </p>
             <div className="bg-base-200 rounded-lg p-4 text-sm">
               <p className="font-semibold text-base-content">Doc2Endpoint Legal</p>
-              <p>Email: <a href="mailto:legal@doc2endpoint.io" className="text-primary hover:underline">legal@doc2endpoint.io</a></p>
+              <p>Email: <a href="mailto:legal@doc2endpoint.com" className="text-primary hover:underline">legal@doc2endpoint.com</a></p>
               <p>Address: Doc2Endpoint, Inc., 123 Innovation Drive, San Francisco, CA 94105</p>
             </div>
           </Section>

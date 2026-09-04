@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
             <p>
               Doc2Endpoint ("we," "our," or "us") is committed to protecting your personal information and your right to
               privacy. This Privacy Policy describes how we collect, use, and share information when you use our
-              platform at doc2endpoint.io (the "Service").
+              platform at doc2endpoint.com (the "Service").
             </p>
             <p>
               By using our Service, you agree to the collection and use of information in accordance with this policy.
@@ -129,7 +129,7 @@ export default function PrivacyPolicy() {
               <li>Withdraw consent for data processing where consent is the legal basis</li>
               <li>Lodge a complaint with a data protection authority</li>
             </ul>
-            <p>To exercise these rights, contact us at <a href="mailto:privacy@doc2endpoint.io" className="text-primary hover:underline">privacy@doc2endpoint.io</a>.</p>
+            <p>To exercise these rights, contact us at <a href="mailto:privacy@doc2endpoint.com" className="text-primary hover:underline">privacy@doc2endpoint.com</a>.</p>
           </Section>
 
           <Section title="9. Cookies">
@@ -162,7 +162,7 @@ export default function PrivacyPolicy() {
             </p>
             <div className="bg-base-200 rounded-lg p-4 text-sm">
               <p className="font-semibold text-base-content">Doc2Endpoint Privacy Team</p>
-              <p>Email: <a href="mailto:privacy@doc2endpoint.io" className="text-primary hover:underline">privacy@doc2endpoint.io</a></p>
+              <p>Email: <a href="mailto:privacy@doc2endpoint.com" className="text-primary hover:underline">privacy@doc2endpoint.com</a></p>
               <p>Address: Doc2Endpoint, Inc., 123 Innovation Drive, San Francisco, CA 94105</p>
             </div>
           </Section>

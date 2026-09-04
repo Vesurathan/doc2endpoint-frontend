@@ -128,7 +128,7 @@ export default function Docs() {
           <div className="mt-8 mx-3 p-3 rounded-xl bg-primary/5 border border-primary/20">
             <p className="text-xs font-semibold text-base-content mb-1">Need help?</p>
             <p className="text-xs text-base-content/60 mb-2">Open an issue or email support.</p>
-            <a href="mailto:support@doc2endpoint.io" className="text-xs text-primary hover:underline">support@doc2endpoint.io</a>
+            <a href="mailto:support@doc2endpoint.com" className="text-xs text-primary hover:underline">support@doc2endpoint.com</a>
           </div>
         </aside>
 
@@ -492,7 +492,7 @@ console.log(data.total);  // total count across all pages`} />
             <div className="flex gap-4">
               <Link to="/terms" className="hover:text-base-content">Terms</Link>
               <Link to="/privacy" className="hover:text-base-content">Privacy</Link>
-              <a href="mailto:support@doc2endpoint.io" className="hover:text-base-content">support@doc2endpoint.io</a>
+              <a href="mailto:support@doc2endpoint.com" className="hover:text-base-content">support@doc2endpoint.com</a>
             </div>
             <p>Doc2Endpoint — v1.0</p>
           </div>
