@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { register } from "../api/auth";
 import GoogleButton from "../components/GoogleButton";
 import AuthLayout from "../components/AuthLayout";
+import PasswordInput from "../components/PasswordInput";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -92,10 +93,8 @@ export default function Register() {
           <label className="label pb-1">
             <span className="label-text font-medium">Password</span>
           </label>
-          <input
-            type="password"
+          <PasswordInput
             placeholder="Min. 8 characters"
-            className="input input-bordered w-full"
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
             required
@@ -106,10 +105,8 @@ export default function Register() {
           <label className="label pb-1">
             <span className="label-text font-medium">Confirm password</span>
           </label>
-          <input
-            type="password"
+          <PasswordInput
             placeholder="Repeat your password"
-            className="input input-bordered w-full"
             value={form.confirm}
             onChange={(e) => setForm({ ...form, confirm: e.target.value })}
             required

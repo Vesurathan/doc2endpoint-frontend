@@ -4,6 +4,7 @@ import { login } from "../api/auth";
 import { useAuth } from "../context/AuthContext";
 import GoogleButton from "../components/GoogleButton";
 import AuthLayout from "../components/AuthLayout";
+import PasswordInput from "../components/PasswordInput";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -74,14 +75,15 @@ export default function Login() {
         <div className="form-control">
           <label className="label pb-1">
             <span className="label-text font-medium">Password</span>
-            <a href="mailto:support@doc2endpoint.com" className="label-text-alt text-primary hover:underline">
+            <Link
+              to={`/forgot-password${form.username ? `?email=${encodeURIComponent(form.username)}` : ""}`}
+              className="label-text-alt text-primary hover:underline"
+            >
               Forgot password?
-            </a>
+            </Link>
           </label>
-          <input
-            type="password"
+          <PasswordInput
             placeholder="••••••••"
-            className="input input-bordered w-full"
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
             required
