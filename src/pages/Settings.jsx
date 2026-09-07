@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import DashboardLayout from "../components/DashboardLayout";
 import { useAuth } from "../context/AuthContext";
+import { useDialog } from "../context/DialogContext";
 import { createCheckoutSession, createPortalSession, getBillingStatus } from "../api/billing";
 import axios from "axios";
 
@@ -132,6 +133,7 @@ export default function Settings() {
   // Delete account
   const [deleteConfirm, setDeleteConfirm] = useState("");
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const { confirm, alert } = useDialog();
 
   const token = localStorage.getItem("token");
   const headers = { Authorization: `Bearer ${token}` };
@@ -233,13 +235,24 @@ export default function Settings() {
 
   const deleteAccount = async () => {
     if (deleteConfirm !== user?.email) return;
+    const ok = await confirm({
+      title: "Delete your account?",
+      message: "Every dataset, API key and live endpoint you own will be permanently destroyed. This cannot be undone.",
+      confirmText: "Delete my account",
+      danger: true,
+    });
+    if (!ok) return;
     setDeleteLoading(true);
     try {
       await axios.delete(`${API}/auth/me`, { headers });
       localStorage.removeItem("token");
       navigate("/");
     } catch (err) {
-      alert(err.response?.data?.detail || "Failed to delete account.");
+      await alert({
+        title: "Could not delete account",
+        message: err.response?.data?.detail || "Something went wrong. Please try again.",
+        danger: true,
+      });
       setDeleteLoading(false);
     }
   };

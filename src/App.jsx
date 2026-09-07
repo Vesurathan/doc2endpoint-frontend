@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { DialogProvider } from "./context/DialogContext";
 import PageTitle from "./components/PageTitle";
 
 // Public
@@ -68,40 +69,42 @@ function A({ children }) { return <AdminRoute>{children}</AdminRoute>; }
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <PageTitle />
-        <Routes>
-          {/* Public */}
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
-          <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
-          <Route path="/verify-email" element={<VerifyEmail />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/docs" element={<Docs />} />
-          <Route path="/gallery" element={<Gallery />} />
+      <DialogProvider>
+        <BrowserRouter>
+          <PageTitle />
+          <Routes>
+            {/* Public */}
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
+            <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/docs" element={<Docs />} />
+            <Route path="/gallery" element={<Gallery />} />
 
-          {/* User portal */}
-          <Route path="/dashboard" element={<P><Dashboard /></P>} />
-          <Route path="/dashboard/datasets" element={<P><Datasets /></P>} />
-          <Route path="/dashboard/datasets/new" element={<P><NewDataset /></P>} />
-          <Route path="/dashboard/datasets/:id" element={<P><DatasetChat /></P>} />
-          <Route path="/dashboard/api-keys" element={<P><ApiKeys /></P>} />
-          <Route path="/dashboard/analytics" element={<P><Analytics /></P>} />
-          <Route path="/dashboard/settings" element={<P><Settings /></P>} />
-          <Route path="/dashboard/billing" element={<P><Billing /></P>} />
+            {/* User portal */}
+            <Route path="/dashboard" element={<P><Dashboard /></P>} />
+            <Route path="/dashboard/datasets" element={<P><Datasets /></P>} />
+            <Route path="/dashboard/datasets/new" element={<P><NewDataset /></P>} />
+            <Route path="/dashboard/datasets/:id" element={<P><DatasetChat /></P>} />
+            <Route path="/dashboard/api-keys" element={<P><ApiKeys /></P>} />
+            <Route path="/dashboard/analytics" element={<P><Analytics /></P>} />
+            <Route path="/dashboard/settings" element={<P><Settings /></P>} />
+            <Route path="/dashboard/billing" element={<P><Billing /></P>} />
 
-          {/* Admin portal */}
-          <Route path="/admin" element={<A><AdminDashboard /></A>} />
-          <Route path="/admin/users" element={<A><AdminUsers /></A>} />
-          <Route path="/admin/datasets" element={<A><AdminDatasets /></A>} />
-          <Route path="/admin/api-keys" element={<A><AdminApiKeys /></A>} />
-          <Route path="/admin/analytics" element={<A><AdminAnalytics /></A>} />
+            {/* Admin portal */}
+            <Route path="/admin" element={<A><AdminDashboard /></A>} />
+            <Route path="/admin/users" element={<A><AdminUsers /></A>} />
+            <Route path="/admin/datasets" element={<A><AdminDatasets /></A>} />
+            <Route path="/admin/api-keys" element={<A><AdminApiKeys /></A>} />
+            <Route path="/admin/analytics" element={<A><AdminAnalytics /></A>} />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </DialogProvider>
     </AuthProvider>
   );
 }

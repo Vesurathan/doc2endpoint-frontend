@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../components/DashboardLayout";
 import { listKeys, createKey, revokeKey } from "../api/apiKeys";
 import { listDatasets } from "../api/datasets";
+import { useDialog } from "../context/DialogContext";
 
 function CopyButton({ text }) {
   const [copied, setCopied] = useState(false);
@@ -108,6 +109,7 @@ export default function ApiKeys() {
   const [creating, setCreating] = useState(false);
   const [justCreated, setJustCreated] = useState(null);
   const [error, setError] = useState("");
+  const { confirm } = useDialog();
 
   const load = () =>
     Promise.all([listKeys(), listDatasets()])
@@ -162,7 +164,13 @@ export default function ApiKeys() {
   };
 
   const handleRevoke = async (id) => {
-    if (!confirm("Revoke this API key? Any apps using it will stop working immediately.")) return;
+    const ok = await confirm({
+      title: "Revoke this API key?",
+      message: "Any app using it will stop working immediately. This cannot be undone.",
+      confirmText: "Revoke key",
+      danger: true,
+    });
+    if (!ok) return;
     await revokeKey(id);
     load();
   };

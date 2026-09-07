@@ -5,6 +5,7 @@ import { getDataset, getMessages, sendMessage, confirmSchema, previewDataset, ge
 import DatasetSettings from "../components/DatasetSettings";
 import SchemaEditor from "../components/SchemaEditor";
 import { useAuth } from "../context/AuthContext";
+import { useDialog } from "../context/DialogContext";
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
@@ -354,6 +355,7 @@ function OpenAPITab({ dataset, onPublishGpt }) {
   const [loading, setLoading] = useState(false);
   const [previewSpec, setPreviewSpec] = useState(null);
   const [copied, setCopied] = useState(false);
+  const { alert } = useDialog();
 
   const downloadSpec = async () => {
     setLoading(true);
@@ -369,7 +371,7 @@ function OpenAPITab({ dataset, onPublishGpt }) {
       a.click();
       URL.revokeObjectURL(url);
     } catch {
-      alert("Failed to generate spec. Try again.");
+      await alert({ title: "Couldn't generate the spec", message: "Something went wrong. Please try again.", danger: true });
     } finally {
       setLoading(false);
     }

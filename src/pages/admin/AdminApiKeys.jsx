@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
 import { listAdminKeys, revokeAdminKey } from "../../api/admin";
+import { useDialog } from "../../context/DialogContext";
 
 export default function AdminApiKeys() {
   const [keys, setKeys] = useState([]);
@@ -9,6 +10,7 @@ export default function AdminApiKeys() {
   const [pages, setPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [revoking, setRevoking] = useState(null);
+  const { confirm } = useDialog();
 
   const load = (p = 1) => {
     setLoading(true);
@@ -20,7 +22,13 @@ export default function AdminApiKeys() {
   useEffect(() => { load(); }, []);
 
   const handleRevoke = async (key) => {
-    if (!confirm(`Revoke API key "${key.name}" for ${key.user_email}? Any apps using this key will break immediately.`)) return;
+    const ok = await confirm({
+      title: `Revoke "${key.name}"?`,
+      message: `This key belongs to ${key.user_email}. Any app using it will stop working immediately.`,
+      confirmText: "Revoke key",
+      danger: true,
+    });
+    if (!ok) return;
     setRevoking(key.id);
     try {
       await revokeAdminKey(key.id);

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
 import { listAdminDatasets, deleteAdminDataset } from "../../api/admin";
+import { useDialog } from "../../context/DialogContext";
 
 const STATUS_STYLE = {
   active: { color: "#10b981", label: "Live" },
@@ -36,6 +37,7 @@ export default function AdminDatasets() {
   const [statusFilter, setStatusFilter] = useState("");
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState(null);
+  const { confirm, alert } = useDialog();
 
   const load = (p = 1, s = search, sf = statusFilter) => {
     setLoading(true);
@@ -47,14 +49,20 @@ export default function AdminDatasets() {
   useEffect(() => { load(); }, []);
 
   const handleDelete = async (ds) => {
-    if (!confirm(`Delete dataset "${ds.name}"?\nThis drops the Postgres table and all data. This cannot be undone.`)) return;
+    const ok = await confirm({
+      title: `Delete "${ds.name}"?`,
+      message: "This drops the Postgres table and all of its rows, and the live API endpoint will stop responding. This cannot be undone.",
+      confirmText: "Delete dataset",
+      danger: true,
+    });
+    if (!ok) return;
     setDeleting(ds.id);
     try {
       await deleteAdminDataset(ds.id);
       setDatasets((prev) => prev.filter((d) => d.id !== ds.id));
       setTotal((t) => t - 1);
     } catch (e) {
-      alert(e.response?.data?.detail || "Delete failed");
+      await alert({ title: "Delete failed", message: e.response?.data?.detail || "Something went wrong. Please try again.", danger: true });
     } finally {
       setDeleting(null);
     }

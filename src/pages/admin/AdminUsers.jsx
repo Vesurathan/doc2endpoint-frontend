@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
 import { listAdminUsers, updateAdminUser, deleteAdminUser } from "../../api/admin";
+import { useDialog } from "../../context/DialogContext";
 
 const PLAN_COLOR = {
   free: { bg: "#1e293b", text: "#64748b", border: "#334155" },
@@ -23,6 +24,7 @@ function UserDrawer({ user, onClose, onUpdate }) {
   const [isAdmin, setIsAdmin] = useState(user.is_admin);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const { confirm } = useDialog();
 
   const save = async () => {
     setSaving(true);
@@ -39,7 +41,13 @@ function UserDrawer({ user, onClose, onUpdate }) {
   };
 
   const handleDelete = async () => {
-    if (!confirm(`Permanently delete ${user.email}? This cannot be undone.`)) return;
+    const ok = await confirm({
+      title: "Delete this user?",
+      message: `${user.email} will be permanently removed, along with their datasets, API keys and usage history. This cannot be undone.`,
+      confirmText: "Delete user",
+      danger: true,
+    });
+    if (!ok) return;
     try {
       await deleteAdminUser(user.id);
       onUpdate(null);
